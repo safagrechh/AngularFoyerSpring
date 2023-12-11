@@ -1,32 +1,29 @@
-<!-- update-foyer.component.html -->
-
 <div class="container" class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
   <div class="formbold-main-wrapper">
     <div class="formbold-form-wrapper mt-4">
-      <!-- Use ngForm directive to create a template-driven form -->
-      <form #updateForm="ngForm" (ngSubmit)="updateFoyer($event)">
+      <form #updateForm="ngForm" >
         <div class="formbold-form-title">
           <h2 class="">Update Foyer</h2>
         </div>
+        
         <div class="formbold-mb-3">
           <label class="formbold-form-label">Nom du Foyer:</label>
-          <!-- Use ngModel to bind form controls to the component's properties -->
-          <input type="text" class="formbold-form-input" id="nomFoyer" name="nomFoyer" [(ngModel)]="foyer.nomFoyer" required>
+          <input type="text" class="formbold-form-input" id="nomFoyer" name="nomFoyer" [(ngModel)]="foyer.nomFoyer" pattern="[a-zA-Z]*" required>
+          <div *ngIf="updateForm.controls['nomFoyer'].invalid && updateForm.controls['nomFoyer'].touched">
+            <div *ngIf="updateForm.controls['nomFoyer'].hasError('required')">Veuillez remplir ce champ.</div>
+          </div>
         </div>
   
         <div class="formbold-mb-3">
           <label class="formbold-form-label">Capacité du Foyer:</label>
-          <!-- Use ngModel to bind form controls to the component's properties -->
           <input type="number" class="formbold-form-input" id="capaciteFoyer" name="capaciteFoyer" [(ngModel)]="foyer.capaciteFoyer" required>
+          <div *ngIf="updateForm.controls['capaciteFoyer'].invalid && updateForm.controls['capaciteFoyer'].touched">
+            <div *ngIf="updateForm.controls['capaciteFoyer'].hasError('required')">Veuillez remplir ce champ.</div>
+          </div>
         </div>
-  
-        <!-- Add other form controls as needed -->
-  
-        <!-- Disable the submit button if the form is not valid -->
-        <button type="submit"  class="btn btn-danger" >Update</button>
-  
-        
-      </form>
+        <app-updateaction (update)="updateFoyer()" [idf]="foyer.idFoyer"  [nomf]="foyer.nomFoyer" [capacite]="foyer.capaciteFoyer"></app-updateaction>
+       <!-- <button type="submit" class="btn btn-danger" [disabled]="updateForm.invalid">Update</button> -->
+     </form>
     </div>
   </div>
 </div>

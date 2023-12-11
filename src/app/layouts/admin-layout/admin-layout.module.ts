@@ -16,6 +16,8 @@ import { AddFoyerComponent } from 'src/app/pages/foyer-pages/add-foyer/add-foyer
 import { UpdateFoyerComponent } from 'src/app/pages/foyer-pages/update-foyer/update-foyer.component';
 import { CapaciteRangeComponent } from 'src/app/pages/foyer-pages/capacite-range/capacite-range.component';
 import { ListFoyerComponent } from 'src/app/pages/foyer-pages/list-foyer/list-foyer.component';
+import { UpdateactionComponent } from 'src/app/pages/foyer-pages/updateaction/updateaction.component';
+import { HighlightDirective } from 'src/app/highlight.directive';
 // import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
@@ -32,7 +34,10 @@ import { ListFoyerComponent } from 'src/app/pages/foyer-pages/list-foyer/list-fo
     UserProfileComponent,
     TablesComponent,
     IconsComponent,
-    MapsComponent,UpdateFoyerComponent , CapaciteRangeComponent,AddFoyerComponent,ListFoyerComponent
+    MapsComponent,UpdateFoyerComponent , 
+    CapaciteRangeComponent,
+    AddFoyerComponent,
+    ListFoyerComponent,UpdateactionComponent,HighlightDirective,
   ]
 })
 

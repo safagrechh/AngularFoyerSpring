@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Foyer } from 'src/app/Models/Foyer';
 import { FoyerService } from '../../../services/foyer.service';
 import { UniversiteService } from '../../../services/universite.service';
@@ -11,24 +12,27 @@ import { Router } from '@angular/router';
   templateUrl: './add-foyer.component.html',
   styleUrls: ['./add-foyer.component.css']
 })
-
-export class AddFoyerComponent {
-  foyer: Foyer = {
-    idFoyer: 0,
-    nomFoyer: '',
-    capaciteFoyer: 0,
-   // universite: { idUniversite: 0, nomUniversite: '', adresse: '' },
-    //listBloc: [] // Assuming listBloc is an array property in Foyer
-  };
+export class AddFoyerComponent implements OnInit {
+  foyerForm: FormGroup;
   public universites: Universite[] = [];
 
   constructor(
+    private fb: FormBuilder,
     private foyerService: FoyerService, 
     private universiteService: UniversiteService,
-    private router: Router) {}
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.fetchUniversities();
+    this.initForm();
+  }
+
+  private initForm(): void {
+    this.foyerForm = this.fb.group({
+      nomFoyer: ['', [Validators.required]],
+      capaciteFoyer: [null, [Validators.required, Validators.min(50)]]
+    });
   }
 
   private fetchUniversities(): void {
@@ -42,30 +46,26 @@ export class AddFoyerComponent {
     );
   }
 
-  creerFoyer(event:any) {
-    const { idFoyer, ...foyerWithoutId } = this.foyer;
+  creerFoyer() {
+    if (confirm('Est-ce que vous voulez vraiment ajouter ce foyer ?')) {
+      const foyerData: Partial<Foyer> = {
+        nomFoyer: this.foyerForm.value.nomFoyer,
+        capaciteFoyer: this.foyerForm.value.capaciteFoyer
+      };
   
-
-if(confirm('est ce que vous voulez vraiment ajouter ce foyer')){
-
-  event.target.innerText="Adding..."
-this.foyerService.addFoyer(foyerWithoutId as Partial<Foyer>).subscribe(
-  (Response: Foyer) => {
-    console.log('Foyer ajouté avec succès :', Response);
-    this.router.navigate(['/foyers']) ;
-  },
-  (error) => {
-    console.error('Erreur lors de l\'ajout du foyer :', error);
-    if (error instanceof HttpErrorResponse) {
-      console.error('Full error response:', error);
+      this.foyerService.addFoyer(foyerData).subscribe(
+        (response: Foyer) => {
+          console.log('Foyer ajouté avec succès :', response);
+          this.router.navigate(['/foyers']);
+        },
+        (error) => {
+          console.error('Erreur lors de l\'ajout du foyer :', error);
+          if (error instanceof HttpErrorResponse) {
+            console.error('Full error response:', error);
+          }
+        }
+      );
     }
   }
-);
-}
-  }
-
-  test(err: any){
-    console.log(err);
-  }
-
+  
 }

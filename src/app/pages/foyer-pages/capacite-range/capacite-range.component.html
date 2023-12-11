@@ -9,7 +9,7 @@
     <br>
     <div *ngIf="capaciteRangeForm.controls['minCapacite'].invalid" class="ng-invalid">
       <div *ngIf="capaciteRangeForm.controls['minCapacite'].errors['required']">
-        Empty Field!
+        le champs est vide 
       </div>
     </div>
     <br>
@@ -21,7 +21,7 @@
     <br>
     <div *ngIf="capaciteRangeForm.controls['maxCapacite'].invalid" class="ng-invalid">
       <div *ngIf="capaciteRangeForm.controls['maxCapacite'].errors['required']">
-        Empty Field!
+        le champs est vide 
       </div>
     </div>
     <br>
@@ -31,10 +31,17 @@
    <br>
    <br>
    <br>
+   </div>
   <!-- Display the list of foyers -->
+  
   <div *ngIf="foyers">
-    <h3>Foyers in the Capacite Range</h3>
-    <table class="table">
+    <div class="container header bg-gradient-danger pb-8 pt-5 pt-md-8">
+      <div class="formbold-main-wrapper">
+        <div class="card shadow">
+          <div class="card-header border-0">
+            <h3 class="mb-0">Foyers</h3>
+          </div>
+          <table class="table align-items-center table-flush">
       <thead>
         <tr>
           <th scope="col">Nom Foyer</th>
@@ -42,8 +49,9 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let foyer of foyers">
-          <td>{{ foyer.nomFoyer }}</td>
+        <tr *ngFor="let foyer of foyers" appHighlight [highlightColor]="'yellow'" >
+          
+          <td >{{ foyer.nomFoyer }}</td>
           <td>{{ foyer.capaciteFoyer }}</td>
         </tr>
       </tbody>
@@ -52,3 +60,4 @@
 </div>
 </div>
 </div> 
+</div>

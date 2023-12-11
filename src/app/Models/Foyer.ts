@@ -2,7 +2,7 @@
 
 // Foyer model
 export interface Foyer {
-    idFoyer: number;
+    idFoyer?: number;
     nomFoyer: string;
     capaciteFoyer: number;
     //universite: Universite ; // Change the type to Universite or number

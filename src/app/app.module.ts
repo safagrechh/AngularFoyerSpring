@@ -16,6 +16,8 @@ import { UpdateFoyerComponent } from './pages/foyer-pages/update-foyer/update-fo
 import { CapaciteRangeComponent } from './pages/foyer-pages/capacite-range/capacite-range.component';
 import { AddFoyerComponent } from './pages/foyer-pages/add-foyer/add-foyer.component';
 
+import { HighlightDirective } from './highlight.directive';
+
 
 @NgModule({
   imports: [
@@ -31,6 +33,7 @@ import { AddFoyerComponent } from './pages/foyer-pages/add-foyer/add-foyer.compo
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
+ 
   ],
   providers: [],
   bootstrap: [AppComponent]

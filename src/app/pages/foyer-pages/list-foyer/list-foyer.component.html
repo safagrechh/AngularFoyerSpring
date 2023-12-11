@@ -1,12 +1,13 @@
 <div class="container header bg-gradient-danger pb-8 pt-5 pt-md-8">
   <div class="formbold-main-wrapper">
-    <div class="card shadow">
+    <div class="card shadow" >
       <div class="card-header border-0">
         <h3 class="mb-0">Foyers</h3>
       </div>
-      <table class="table align-items-center table-flush">
+      
+      <table class="table align-items-center table-flush" >
     <thead>
-      <tr class="table-dark">
+      <tr class="table-dark" >
         <th scope="col">Id_Foyer</th>
         <th scope="col">Nom_Foyer</th>
         <th scope="col">Capacite_Foyer</th>
@@ -15,16 +16,12 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let f of foyers; let j=index">
-        <th scope="row">{{f.idFoyer}}</th>
-        <td>{{f.nomFoyer}}</td>
-        <td>{{f.capaciteFoyer}}</td>
-        <td><button type="button" (click)="deleteFoyer($event,f)" class="btn btn-danger" >Delete</button></td>
-      <!--  <td><button *ngIf="!isUpdateMode" (click)="updateFoyer(foy)"type="button"  class="btn btn-dark" >Update</button></td>
-      -->
-      <!-- Ajoutez ce bouton à la fin de chaque ligne -->
-<td>
-   
+      <tr *ngFor="let f of foyers; let j=index" >
+        <th scope="row" appHighlight [highlightColor]="'#EEE6D8'">{{f.idFoyer}}</th>
+        <td appHighlight [highlightColor]="'#EEE6D8'">{{f.nomFoyer}}</td>
+        <td appHighlight [highlightColor]="'#EEE6D8'">{{f.capaciteFoyer}}</td>
+        <td appHighlight [highlightColor]="'#EEE6D8'"><button type="button" (click)="deleteFoyer($event,f)" class="btn btn-danger" >Delete</button></td>
+<td appHighlight [highlightColor]="'#EEE6D8'">
     <button type="button" (click)="navigateToUpdatePage(f)" class="btn btn-primary">Update Page</button>
   </td>
   

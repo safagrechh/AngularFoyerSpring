@@ -21,9 +21,6 @@ export class UpdateFoyerComponent implements OnInit {
     capaciteFoyer: 0,
     // Add other properties as needed
   };
-  updating = false;
-  updateSuccess = false;
-  updateFailure = false;
 
   constructor(
     private foyerService: FoyerService,
@@ -49,9 +46,10 @@ export class UpdateFoyerComponent implements OnInit {
     );
   }
 
-  updateFoyer(event:any): void {
+  updateFoyer(): void {
     if(confirm('est ce que vous voulez vraiment modifier ce foyer')){
-      event.target.innerText="updating..."
+      // event.target.innerText="updating..."
+      console.log(this.foyer)
     this.foyerService.updateFoyer(this.foyer).pipe(delay(1000)).subscribe(
       
       ()=>this.router.navigate(['/foyers'])
@@ -60,4 +58,8 @@ export class UpdateFoyerComponent implements OnInit {
     )
   }
   }
+  handleUpdate(message: string) {
+    console.log(message); // You can do further handling here if needed
+  }
+  
 }

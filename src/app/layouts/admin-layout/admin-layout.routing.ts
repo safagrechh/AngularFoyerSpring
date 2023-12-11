@@ -9,6 +9,7 @@ import { AddFoyerComponent } from 'src/app/pages/foyer-pages/add-foyer/add-foyer
 import { UpdateFoyerComponent } from 'src/app/pages/foyer-pages/update-foyer/update-foyer.component';
 import { ListFoyerComponent } from 'src/app/pages/foyer-pages/list-foyer/list-foyer.component';
 import { CapaciteRangeComponent } from 'src/app/pages/foyer-pages/capacite-range/capacite-range.component';
+import { UpdateactionComponent } from 'src/app/pages/foyer-pages/updateaction/updateaction.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
@@ -20,5 +21,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'update-foyer/:id',          component: UpdateFoyerComponent },
     { path: 'capacite-foyer',           component: CapaciteRangeComponent },
     { path: 'foyers',           component: ListFoyerComponent },
+    { path: 'updateaction' , component: UpdateactionComponent}
 
 ];
